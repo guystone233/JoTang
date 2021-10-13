@@ -37,14 +37,13 @@ class Fragment2 : Fragment() {
         am.start()
         var is_rotating=1
         image.setOnClickListener {
-        if(is_rotating==0){
-            am.start()
-            is_rotating=1
+            is_rotating = if(is_rotating==0){
+                am.start()
+                1
+            } else {
+                am.pause()
+                0
             }
-        else {
-            am.pause()
-            is_rotating=0
-        }
         }
         val task = MyTimerTask()
         Timer().schedule(task, Date(), 1000)

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-        val am= ObjectAnimator.ofFloat(viewPager,"rotation", 0f, 360f)
+        val am = ObjectAnimator.ofFloat(viewPager,"rotation", 0f, 360f)
         am.duration = 3000
         am.repeatCount = 1
         am.interpolator = AnticipateOvershootInterpolator()
@@ -46,14 +46,16 @@ class MainActivity : AppCompatActivity() {
 
     }
     public fun a(){
-        val builder = NotificationCompat.Builder(this, "default")
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel = NotificationChannel("normal","Normal",NotificationManager.IMPORTANCE_DEFAULT)
+        manager.createNotificationChannel(channel)
+        val builder = NotificationCompat.Builder(this,"normal")
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle("233")
             .setContentText("233")
-        with(NotificationManagerCompat.from(this)) {
-            notify(1, builder.build())
+            manager.notify(1, builder.build())
         }
 
-    }
+
 
 }

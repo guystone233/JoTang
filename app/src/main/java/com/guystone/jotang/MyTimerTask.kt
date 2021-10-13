@@ -11,9 +11,7 @@ import java.util.*
 
 public class MyTimerTask() : TimerTask() {
     override fun run() {
-
-
-
+        println(LocalDateTime.now().toString())//这里本来应该是修改fragment2中的文本的
     }
 
 }
